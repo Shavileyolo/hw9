@@ -1,0 +1,24 @@
+---
+- name: maven_install
+  apt:
+    name: maven
+    state: present
+
+- name: get_rep
+  git:
+    repo: "{{ rep_app }}"
+    dest: "{{ dest_folder }}"
+    clone: true
+    update: true
+
+- name: Build_app
+  command:
+    chdir: "{{ dest_folder }}"
+    cmd: mvn package 
+
+- name: art_mov
+  synchronize:
+    mode: pull
+    src: "{{ dest_folder }}/target/"
+    dest: "{{ dest_local }}"
+  delegate_to: localhost

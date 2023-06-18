@@ -1,0 +1,4 @@
+---
+rep_app: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+dest_folder: /tmp/dst
+dest_local: /tmp/art

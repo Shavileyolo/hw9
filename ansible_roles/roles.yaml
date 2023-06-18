@@ -1,0 +1,18 @@
+---
+- name: Config_master
+  hosts: master
+  become: true
+
+  roles:
+    - common
+    - master
+    - security
+
+- name: Config_second
+  hosts: second
+  become: true
+
+  roles:
+    - common
+    - second
+    - security

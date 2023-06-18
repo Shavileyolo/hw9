@@ -1,0 +1,12 @@
+---
+- name: tomcat_install
+  apt:
+    name: tomcat9
+    state: present
+
+- name: artif_move
+  synchronize:
+    src: "{{ dest_local }}"
+    dest: "{{ dest_web }}"
+  delegate_to: localhost
+  notify: restart tomcat
